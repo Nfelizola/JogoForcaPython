@@ -5,7 +5,6 @@
 from operator import length_hint
 import time
 import webbrowser
-from pip import main
 from MyDefs import *
 
 # conjunto de imagens da forca com as fases do enforcado e a fase de vitorioso na posição 7
@@ -96,19 +95,19 @@ while erros<6 :
       if (nletrasacertadas>=int(x/2)):
             print("Pista destravada==>")
             print(vpista) 
-      escolha = input("ok , "+nomejogador+",  Qual letra você quer arriscar?==>").upper() 
-      acerto = palavra.count(escolha)
+      escolha = input("ok , "+nomejogador+",  Qual letra você quer arriscar?==>",).upper() 
+      acerto = palavra.find(escolha)
+      qtdeletras = palavra.count(escolha)
+      
       if acerto >0 :
-        print("oba temos estas letra sim...")
-        time.sleep(2)
-        pos = 0
-        substituir=False
-        while acerto != 0:
-                pos = (palavra.find(escolha,pos))
-                tracos = tracos.replace("["+str(pos+1)+"]",escolha,1)
-                pos=pos+1
-                nletrasacertadas= nletrasacertadas+ 1
-                acerto = acerto -1
+        print("espere....")
+        time.sleep(1)
+        pos=0
+        for i  in range(qtdeletras) :
+            print (i)
+            pos = (palavra.find(escolha,pos))
+            tracos = tracos.replace("["+str(pos+1)+"]",escolha,1)
+            pos=pos+1    
                 
         if (tracos.find("[",0)==-1) :
             acerto=0
